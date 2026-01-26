@@ -15,9 +15,36 @@ class GetAppListRequest extends Request
 
     protected Method $method = Method::GET;
 
+    public function __construct(
+        public readonly ?int $max_results = null,
+        public readonly ?int $last_appid = null,
+        public readonly ?int $if_modified_since = null,
+        public readonly ?bool $include_games = null,
+        public readonly ?bool $include_dlc = null,
+        public readonly ?bool $include_software = null,
+        public readonly ?bool $include_videos = null,
+        public readonly ?bool $include_hardware = null,
+        public readonly ?string $have_description_language = null,
+    ) {}
+
     public function resolveEndpoint(): string
     {
-        return '/ISteamApps/GetAppList/v2';
+        return '/IStoreService/GetAppList/v1';
+    }
+
+    public function defaultQuery(): array
+    {
+        return array_filter([
+            'max_results' => $this->max_results,
+            'last_appid' => $this->last_appid,
+            'if_modified_since' => $this->if_modified_since,
+            'include_games' => $this->include_games,
+            'include_dlc' => $this->include_dlc,
+            'include_software' => $this->include_software,
+            'include_videos' => $this->include_videos,
+            'include_hardware' => $this->include_hardware,
+            'have_description_language' => $this->have_description_language,
+        ]);
     }
 
     /**
@@ -25,6 +52,6 @@ class GetAppListRequest extends Request
      */
     public function createDtoFromResponse(Response $response): Collection
     {
-        return new Collection(App::collect($response->json('applist.apps')));
+        return new Collection(App::collect($response->json('response.apps')));
     }
 }
