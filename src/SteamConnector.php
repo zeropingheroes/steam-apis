@@ -13,6 +13,7 @@ use Astrotomic\SteamSdk\Data\NewsItem;
 use Astrotomic\SteamSdk\Data\OwnedApp;
 use Astrotomic\SteamSdk\Data\PlayerBan;
 use Astrotomic\SteamSdk\Data\PlayerSummary;
+use Astrotomic\SteamSdk\Data\RecentlyPlayedApp;
 use Astrotomic\SteamSdk\Enums\Relationship;
 use Astrotomic\SteamSdk\Enums\VanityType;
 use Astrotomic\SteamSdk\Requests\GetAppListRequest;
@@ -22,6 +23,7 @@ use Astrotomic\SteamSdk\Requests\GetNewsForAppRequest;
 use Astrotomic\SteamSdk\Requests\GetOwnedGamesRequest;
 use Astrotomic\SteamSdk\Requests\GetPlayerBansRequest;
 use Astrotomic\SteamSdk\Requests\GetPlayerSummariesRequest;
+use Astrotomic\SteamSdk\Requests\GetRecentlyPlayedGamesRequest;
 use Astrotomic\SteamSdk\Requests\GetSteamLevelRequest;
 use Astrotomic\SteamSdk\Requests\GetSupportedApiListRequest;
 use Astrotomic\SteamSdk\Requests\QueryLocationsRequest;
@@ -165,6 +167,21 @@ class SteamConnector extends Connector
                 $include_appinfo,
                 $include_extended_appinfo,
                 $include_played_free_games,
+            )
+        )->dtoOrFail();
+    }
+
+    /**
+     * @return Collection<array-key, RecentlyPlayedApp>
+     */
+    public function getRecentlyPlayedGames(
+        string $steamid,
+        ?int $count = 0,
+    ): Collection {
+        return $this->send(
+            new GetRecentlyPlayedGamesRequest(
+                $steamid,
+                $count
             )
         )->dtoOrFail();
     }
