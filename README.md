@@ -7,7 +7,7 @@ Forked with ❤️ from [Astrotomic/steam-sdk](https://github.com/Astrotomic/ste
 ## Installation
 
 ```bash
-composer require astrotomic/steam-sdk
+composer require zeropingheroes/steam-apis
 ```
 
 In your Laravel project's `config/services.php` add your [Steam API key](https://steamcommunity.com/dev/apikey):
