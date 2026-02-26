@@ -40,19 +40,20 @@ $steamStoreApi->appDetails(appid: 440);
 
 ### Implemented requests
 
-| Steam API     | Steam Interface    | Method                                    |
-|---------------|--------------------|-------------------------------------------|
-| Web API       | `ISteamApps`       | `getAppList()`                            |
-| Web API       | `ISteamNews`       | `getNewsForApp()`                         |
-| Web API       | `ISteamUser`       | `getFriendList()`                         |
-| Web API       | `ISteamUser`       | `getPlayerBans()`                         |
-| Web API       | `ISteamUser`       | `getPlayerSummaries()`                    |
-| Web API       | `ISteamUser`       | `resolveVanityUrl()`                      |
-| Web API       | `IPlayerService`   | `getRecentlyPlayedGames()`                |
-| Web API       | `IPlayerService`   | `getSteamLevel()`                         |
-| Web API       | `ISteamUserStats`  | `getGlobalAchievementPercentagesForApp()` |
-| Web API       | `ISteamWebAPIUtil` | `getSupportedApiList()`                   |
-| Community API | ?                  | `queryLocations()`                        |
+| Steam API     | Steam Interface    | Class Method                              | Connector Class              |
+|---------------|--------------------|-------------------------------------------|------------------------------|
+| Web API       | `ISteamApps`       | `getAppList()`                            | `SteamWebApiConnector`       |
+| Web API       | `ISteamNews`       | `getNewsForApp()`                         | `SteamWebApiConnector`       |
+| Web API       | `ISteamUser`       | `getFriendList()`                         | `SteamWebApiConnector`       |
+| Web API       | `ISteamUser`       | `getPlayerBans()`                         | `SteamWebApiConnector`       |
+| Web API       | `ISteamUser`       | `getPlayerSummaries()`                    | `SteamWebApiConnector`       |
+| Web API       | `ISteamUser`       | `resolveVanityUrl()`                      | `SteamWebApiConnector`       |
+| Web API       | `IPlayerService`   | `getRecentlyPlayedGames()`                | `SteamWebApiConnector`       |
+| Web API       | `IPlayerService`   | `getSteamLevel()`                         | `SteamWebApiConnector`       |
+| Web API       | `ISteamUserStats`  | `getGlobalAchievementPercentagesForApp()` | `SteamWebApiConnector`       |
+| Web API       | `ISteamWebAPIUtil` | `getSupportedApiList()`                   | `SteamWebApiConnector`       |
+| Community API | ?                  | `queryLocations()`                        | `SteamCommunityApiConnector` |
+| Store API     | ?                  | `appDetails()`                            | `SteamStoreApiConnector`     |
 
 For more information on Steam's APIs, see:
 - https://partner.steamgames.com/doc/webapi
