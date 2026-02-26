@@ -28,14 +28,15 @@ class QueryLocationsRequest extends Request
         $query = '';
 
         if ($this->countrycode) {
-            $query .= "/{$this->countrycode}";
+            $query .= '/'.$this->countrycode;
 
             if ($this->statecode) {
-                $query .= "/{$this->statecode}";
+                $query .= '/'.$this->statecode;
+
             }
         }
 
-        return "/actions/QueryLocations{$query}";
+        return "/actions/QueryLocations$query";
     }
 
     /**

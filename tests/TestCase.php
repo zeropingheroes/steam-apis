@@ -43,7 +43,7 @@ abstract class TestCase extends Orchestra
                     parse_url($request->getUrl(), PHP_URL_HOST),
                     $request->getMethod()->value,
                     parse_url($request->getUrl(), PHP_URL_PATH),
-                    http_build_query(($request->query()->all())),
+                    http_build_query($request->query()->all()),
                 ]));
 
                 return MockResponse::fixture($name);
@@ -58,7 +58,7 @@ abstract class TestCase extends Orchestra
                     parse_url($request->getUrl(), PHP_URL_HOST),
                     $request->getMethod()->value,
                     parse_url($request->getUrl(), PHP_URL_PATH),
-                    http_build_query(($request->query()->all())),
+                    http_build_query($request->query()->all()),
                 ]));
 
                 return MockResponse::fixture($name);
