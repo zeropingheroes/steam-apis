@@ -10,11 +10,7 @@ use Saloon\Http\Connector;
 use Saloon\Traits\Plugins\AcceptsJson;
 use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
 use xPaw\Steam\SteamID;
-use Zeropingheroes\SteamApis\SteamCommunityApi\Data\LocationCity;
-use Zeropingheroes\SteamApis\SteamCommunityApi\Data\LocationCountry;
-use Zeropingheroes\SteamApis\SteamCommunityApi\Data\LocationState;
-use Zeropingheroes\SteamApis\SteamCommunityApi\Requests\QueryLocationsRequest;
-use Zeropingheroes\SteamApis\SteamStoreApi\Data\App;
+use Zeropingheroes\SteamApis\SteamWebApi\Data\App;
 use Zeropingheroes\SteamApis\SteamWebApi\Data\AchievementPercentage;
 use Zeropingheroes\SteamApis\SteamWebApi\Data\ApiInterface;
 use Zeropingheroes\SteamApis\SteamWebApi\Data\Friend;
@@ -63,16 +59,6 @@ class SteamWebApiConnector extends Connector
     {
         return $this->send(
             new GetSupportedApiListRequest
-        )->dtoOrFail();
-    }
-
-    /**
-     * @return Collection<array-key, LocationCountry|LocationState|LocationCity>
-     */
-    public function queryLocations(?string $countrycode = null, ?string $statecode = null): Collection
-    {
-        return $this->send(
-            new QueryLocationsRequest($countrycode, $statecode)
         )->dtoOrFail();
     }
 
