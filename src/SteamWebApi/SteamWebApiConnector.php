@@ -39,7 +39,7 @@ class SteamWebApiConnector extends Connector
     use AlwaysThrowOnErrors;
 
     public function __construct(
-        public readonly ?string $apiKey = null,
+        public readonly string $apiKey,
     ) {}
 
     public function resolveBaseUrl(): string

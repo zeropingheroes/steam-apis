@@ -13,9 +13,8 @@ class SteamStoreApiConnector extends Connector
     use AcceptsJson;
     use AlwaysThrowOnErrors;
 
-    public function __construct(
-        public readonly ?string $apiKey = null,
-    ) {}
+    public function __construct()
+    {}
 
     public function resolveBaseUrl(): string
     {
