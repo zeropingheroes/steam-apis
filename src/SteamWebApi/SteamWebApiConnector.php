@@ -5,6 +5,7 @@ namespace Zeropingheroes\SteamApis\SteamWebApi;
 use Carbon\CarbonInterface;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
+use Saloon\Http\Auth\QueryAuthenticator;
 use Saloon\Http\Connector;
 use Saloon\Traits\Plugins\AcceptsJson;
 use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
@@ -50,12 +51,9 @@ class SteamWebApiConnector extends Connector
         return 'https://api.steampowered.com';
     }
 
-    public function defaultQuery(): array
+    protected function defaultAuth(): QueryAuthenticator
     {
-        return array_filter([
-            'key' => $this->apiKey,
-            'format' => 'json',
-        ]);
+        return new QueryAuthenticator('key', $this->apiKey);
     }
 
     /**
