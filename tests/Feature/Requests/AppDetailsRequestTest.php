@@ -1,11 +1,11 @@
 <?php
 
 use PHPUnit\Framework\Assert;
-use Zeropingheroes\SteamApis\Data\StoreApp;
-use Zeropingheroes\SteamApis\SteamWebApiConnector;
+use Zeropingheroes\SteamApis\SteamStoreApi\SteamStoreApiConnector;
+use Zeropingheroes\SteamApis\SteamStoreApi\Data\App;
 
 it('returns app details', function (int $appid): void {
-    $apps = app(SteamWebApiConnector::class)->appDetails($appid);
+    $apps = app(SteamStoreApiConnector::class)->appDetails($appid);
 
-    Assert::assertInstanceOf(StoreApp::class, $apps);
+    Assert::assertInstanceOf(App::class, $apps);
 })->with('appids');

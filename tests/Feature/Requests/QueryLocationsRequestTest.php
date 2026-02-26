@@ -2,9 +2,9 @@
 
 use PHPUnit\Framework\Assert;
 use Saloon\Exceptions\Request\ClientException;
-use Zeropingheroes\SteamApis\Data\LocationCity;
-use Zeropingheroes\SteamApis\Data\LocationCountry;
-use Zeropingheroes\SteamApis\Data\LocationState;
+use Zeropingheroes\SteamApis\SteamCommunityApi\Data\LocationCity;
+use Zeropingheroes\SteamApis\SteamCommunityApi\Data\LocationCountry;
+use Zeropingheroes\SteamApis\SteamCommunityApi\Data\LocationState;
 
 it('returns all countries', closure: function (): void {
     $countries = $this->steamCommunityApiConnector->queryLocations();

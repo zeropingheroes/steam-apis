@@ -28,10 +28,10 @@ return [
 ## Usage example
 
 ```php
-$steamWebApi = app(\Zeropingheroes\SteamApis\SteamWebApiConnector::class);
+$steamWebApi = app(\Zeropingheroes\SteamApis\SteamCommunityApi\SteamWebApiConnector::class);
 $steamWebApi->getPlayerSummaries($steamid);
 
-$steamCommunityApi = app(\Zeropingheroes\SteamApis\SteamCommunityApiConnector::class);
+$steamCommunityApi = app(\Zeropingheroes\SteamApis\SteamCommunityApi\SteamCommunityApiConnector::class);
 $steamCommunityApi->queryLocations(countrycode: 'DE');
 ```
 

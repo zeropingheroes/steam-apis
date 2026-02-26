@@ -1,9 +1,9 @@
 <?php
 
 use PHPUnit\Framework\Assert;
-use Zeropingheroes\SteamApis\Data\ApiInterface;
-use Zeropingheroes\SteamApis\Data\ApiMethod;
-use Zeropingheroes\SteamApis\Data\ApiParameter;
+use Zeropingheroes\SteamApis\SteamWebApi\Data\ApiInterface;
+use Zeropingheroes\SteamApis\SteamWebApi\Data\ApiMethod;
+use Zeropingheroes\SteamApis\SteamWebApi\Data\ApiParameter;
 
 it('returns supported api list', function (): void {
     $interfaces = $this->steamWebApiConnector->getSupportedApiList();

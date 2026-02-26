@@ -6,6 +6,7 @@ use Closure;
 use InvalidArgumentException;
 use Stringable;
 use xPaw\Steam\SteamID as xPawSteamID;
+use Zeropingheroes\SteamApis\SteamWebApi\SteamWebApiConnector;
 
 class SteamID implements Stringable
 {

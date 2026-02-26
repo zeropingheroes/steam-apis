@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\Assert;
-use Zeropingheroes\SteamApis\Data\PlayerBan;
-use Zeropingheroes\SteamApis\SteamWebApiConnector;
+use Zeropingheroes\SteamApis\SteamWebApi\SteamWebApiConnector;
+use Zeropingheroes\SteamApis\SteamWebApi\Data\PlayerBan;
 
 it('returns player bans', function (string $steamid): void {
     $bans = app(SteamWebApiConnector::class)->getPlayerBans(steamids: $steamid);

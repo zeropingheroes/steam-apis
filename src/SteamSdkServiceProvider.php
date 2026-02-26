@@ -3,6 +3,8 @@
 namespace Zeropingheroes\SteamApis;
 
 use Illuminate\Support\ServiceProvider;
+use Zeropingheroes\SteamApis\SteamCommunityApi\SteamCommunityApiConnector;
+use Zeropingheroes\SteamApis\SteamWebApi\SteamWebApiConnector;
 
 class SteamSdkServiceProvider extends ServiceProvider
 {
@@ -15,6 +17,9 @@ class SteamSdkServiceProvider extends ServiceProvider
         });
         $this->app->bind(SteamCommunityApiConnector::class, function (): SteamCommunityApiConnector {
             return new SteamCommunityApiConnector;
+        });
+        $this->app->bind(SteamStoreApiConnector::class, function (): SteamStoreApiConnector {
+            return new SteamStoreApiConnector;
         });
     }
 }

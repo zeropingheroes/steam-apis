@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\Assert;
-use Zeropingheroes\SteamApis\SteamWebApiConnector;
+use Zeropingheroes\SteamApis\SteamWebApi\SteamWebApiConnector;
 
 it('returns single player level', function (string $steamid): void {
     $level = app(SteamWebApiConnector::class)->getSteamLevel(steamid: $steamid);

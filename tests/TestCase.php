@@ -7,9 +7,10 @@ use Saloon\Http\Faking\Fixture;
 use Saloon\Http\Faking\MockResponse;
 use Saloon\Http\PendingRequest;
 use Saloon\Laravel\Facades\Saloon;
-use Zeropingheroes\SteamApis\SteamCommunityApiConnector;
+use Zeropingheroes\SteamApis\SteamCommunityApi\SteamCommunityApiConnector;
+use Zeropingheroes\SteamApis\SteamStoreApi\SteamStoreApiConnector;
+use Zeropingheroes\SteamApis\SteamWebApi\SteamWebApiConnector;
 use Zeropingheroes\SteamApis\SteamSdkServiceProvider;
-use Zeropingheroes\SteamApis\SteamWebApiConnector;
 
 abstract class TestCase extends Orchestra
 {
@@ -42,14 +43,29 @@ abstract class TestCase extends Orchestra
                     parse_url($request->getUrl(), PHP_URL_HOST),
                     $request->getMethod()->value,
                     parse_url($request->getUrl(), PHP_URL_PATH),
-                    http_build_query(array_diff_key($request->query()->all(), array_flip(['key', 'format']))),
+                    http_build_query(($request->query()->all())),
                 ]));
 
                 return MockResponse::fixture($name);
             },
         ]);
 
-        $this->steamCommunityApiConnector = new SteamCommunityApiConnector(getenv('STEAM_API_KEY'));
+        $this->steamCommunityApiConnector = new SteamCommunityApiConnector();
+
+        Saloon::fake([
+            SteamStoreApiConnector::class => function (PendingRequest $request): Fixture {
+                $name = implode('/', array_filter([
+                    parse_url($request->getUrl(), PHP_URL_HOST),
+                    $request->getMethod()->value,
+                    parse_url($request->getUrl(), PHP_URL_PATH),
+                    http_build_query(($request->query()->all())),
+                ]));
+
+                return MockResponse::fixture($name);
+            },
+        ]);
+
+        $this->steamStoreApiConnector = new SteamStoreApiConnector();
     }
 
     protected function getPackageProviders($app): array
